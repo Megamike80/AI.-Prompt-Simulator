@@ -1,0 +1,2059 @@
+/* ============================================================
+   MAESTRO CIUCHINO - DESIGN SYSTEM & ACCESSIBLE STYLESHEET
+   Concepito per docenti: Alto contrasto, massima leggibilità, responsive
+   ============================================================ */
+
+:root {
+  /* Palette Colori ad Alto Contrasto (WCAG AAA / AA+) */
+  --bg-app: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --bg-muted: #e2e8f0;
+  
+  --text-main: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --text-inverse: #ffffff;
+  
+  /* Brand / Identità Maestro Ciuchino (Denim Rock & Giacca Cuoio) */
+  --primary-blue: #1e3a8a;
+  --primary-blue-hover: #172554;
+  --primary-blue-light: #eff6ff;
+  
+  --accent-amber: #b45309;
+  --accent-amber-light: #fef3c7;
+  --accent-amber-border: #fcd34d;
+  
+  /* Stati e Feedback */
+  --success-green: #15803d;
+  --success-green-light: #f0fdf4;
+  --success-green-border: #86efac;
+  
+  --danger-red: #b91c1c;
+  --danger-red-light: #fef2f2;
+  --danger-red-border: #fca5a5;
+  
+  /* Fasce Scolastiche */
+  --badge-infanzia-bg: #fdf2f8;
+  --badge-infanzia-text: #9d174d;
+  --badge-infanzia-border: #fbcfe8;
+  
+  --badge-primaria-bg: #eff6ff;
+  --badge-primaria-text: #1e40af;
+  --badge-primaria-border: #bfdbfe;
+  
+  --badge-secondaria-bg: #f0fdf4;
+  --badge-secondaria-text: #166534;
+  --badge-secondaria-border: #bbf7d0;
+
+  /* Bordi e Ombre */
+  --border-subtle: #cbd5e1;
+  --border-strong: #94a3b8;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-full: 9999px;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
+  --shadow-popover: 0 12px 24px -4px rgba(15, 23, 42, 0.18), 0 4px 8px -2px rgba(15, 23, 42, 0.08);
+
+  /* Tipografia */
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --line-height-base: 1.6;
+  --line-height-heading: 1.25;
+}
+
+/* Reset e Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  line-height: var(--line-height-base);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Focus Universale per Accessibilità da Tastiera */
+:focus-visible {
+  outline: 3px solid var(--primary-blue);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Container Principale */
+.app-container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* ============================================================
+   HEADER & SELETTORE FASCIA
+   ============================================================ */
+.app-header {
+  background-color: var(--bg-surface);
+  border-bottom: 2px solid var(--border-subtle);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: var(--shadow-sm);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.mascot-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.mascot-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 2.5px solid var(--primary-blue);
+  background-color: #f8fafc;
+  flex-shrink: 0;
+}
+
+.brand-titles h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  line-height: var(--line-height-heading);
+}
+
+.brand-titles p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Selettore Fascia Scolastica */
+.level-selector-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--bg-subtle);
+  padding: 0.35rem 0.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.level-selector-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-right: 0.25rem;
+  white-space: nowrap;
+}
+
+.level-pills {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.level-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.level-btn:hover {
+  background-color: var(--bg-muted);
+  color: var(--text-main);
+}
+
+.level-btn[aria-pressed="true"] {
+  background-color: var(--bg-surface);
+  color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================================
+   PROGRESS BAR & NAVIGAZIONE MODULI
+   ============================================================ */
+.modules-nav-container {
+  margin: 1.5rem 0 1rem 0;
+}
+
+.modules-nav-list {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.4rem;
+  list-style: none;
+}
+
+.module-nav-item {
+  display: flex;
+}
+
+.module-nav-btn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.65rem 0.75rem;
+  background-color: var(--bg-surface);
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  position: relative;
+}
+
+.module-nav-btn:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+.module-nav-btn.active {
+  border-color: var(--primary-blue);
+  background-color: var(--primary-blue-light);
+}
+
+.module-nav-btn.completed {
+  border-color: var(--success-green);
+  background-color: var(--bg-surface);
+}
+
+.nav-step-number {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 0.2rem;
+}
+
+.module-nav-btn.active .nav-step-number {
+  color: var(--primary-blue);
+}
+
+.module-nav-btn.completed .nav-step-number {
+  color: var(--success-green);
+}
+
+.nav-step-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.25;
+}
+
+/* ============================================================
+   SCHEDA INFORMAZIONI FASCIA ATTIVA
+   ============================================================ */
+.level-info-banner {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-left: 5px solid var(--primary-blue);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.level-info-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.level-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: 1px solid;
+}
+
+.level-badge-infanzia {
+  background-color: var(--badge-infanzia-bg);
+  color: var(--badge-infanzia-text);
+  border-color: var(--badge-infanzia-border);
+}
+
+.level-badge-primaria {
+  background-color: var(--badge-primaria-bg);
+  color: var(--badge-primaria-text);
+  border-color: var(--badge-primaria-border);
+}
+
+.level-badge-secondaria {
+  background-color: var(--badge-secondaria-bg);
+  color: var(--badge-secondaria-text);
+  border-color: var(--badge-secondaria-border);
+}
+
+.level-info-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* ============================================================
+   MASCOT DIALOGUE BUBBLES (CONSIGLIO DEL MAESTRO CIUCHINO)
+   ============================================================ */
+.mascot-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background-color: var(--accent-amber-light);
+  border: 1.5px solid var(--accent-amber-border);
+  border-radius: var(--radius-lg);
+  padding: 1.125rem 1.25rem;
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+.mascot-callout-avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 2px solid var(--accent-amber);
+  background-color: #fff;
+  flex-shrink: 0;
+}
+
+.mascot-callout-content {
+  flex: 1;
+}
+
+.mascot-callout-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-amber);
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.mascot-callout-text {
+  font-size: 0.9375rem;
+  color: var(--text-main);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   CARD E SEZIONI GENERALI
+   ============================================================ */
+.content-card {
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.module-header {
+  margin-bottom: 1.5rem;
+}
+
+.module-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--primary-blue);
+  background-color: var(--primary-blue-light);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.5rem;
+}
+
+.module-title {
+  font-size: 1.625rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.module-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   MODULO 1 SPECIFICO: CONFRONTO RICHIESTA VS REGOLA & QUIZ
+   ============================================================ */
+.concept-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 1.25rem 0 1.75rem 0;
+}
+
+.concept-card {
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  border: 2px solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.concept-card-prompt {
+  background-color: #faf5ff;
+  border-color: #d8b4fe;
+}
+
+.concept-card-system {
+  background-color: #eff6ff;
+  border-color: #93c5fd;
+}
+
+.concept-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.concept-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.concept-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-full);
+}
+
+.concept-card-prompt .concept-tag {
+  background-color: #e9d5ff;
+  color: #6b21a8;
+}
+
+.concept-card-system .concept-tag {
+  background-color: #bfdbfe;
+  color: #1e40af;
+}
+
+.concept-metaphor {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.concept-desc {
+  font-size: 0.9375rem;
+  color: var(--text-main);
+  line-height: 1.5;
+}
+
+/* Sezione Confronto Prima & Dopo */
+.comparison-section {
+  margin-top: 1.5rem;
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.compare-col {
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  border: 2px solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.compare-col-bad {
+  background-color: var(--danger-red-light);
+  border-color: var(--danger-red-border);
+}
+
+.compare-col-good {
+  background-color: var(--success-green-light);
+  border-color: var(--success-green-border);
+}
+
+.compare-header {
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.compare-col-bad .compare-header {
+  color: var(--danger-red);
+}
+
+.compare-col-good .compare-header {
+  color: var(--success-green);
+}
+
+.code-box {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.875rem;
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-main);
+  margin-bottom: 0.875rem;
+  white-space: pre-wrap;
+}
+
+.output-box-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.bullet-list {
+  padding-left: 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.bullet-list li {
+  margin-bottom: 0.35rem;
+}
+
+/* Mini Quiz Interattivo */
+.quiz-container {
+  margin-top: 1.75rem;
+}
+
+.quiz-card {
+  background-color: var(--bg-subtle);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.quiz-scenario {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.quiz-question {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.875rem;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quiz-btn {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.quiz-btn:hover:not(:disabled) {
+  border-color: var(--primary-blue);
+  background-color: var(--primary-blue-light);
+}
+
+.quiz-btn.correct {
+  border-color: var(--success-green);
+  background-color: var(--success-green-light);
+  color: var(--success-green);
+  font-weight: 700;
+}
+
+.quiz-btn.incorrect {
+  border-color: var(--danger-red);
+  background-color: var(--danger-red-light);
+  color: var(--danger-red);
+  font-weight: 700;
+}
+
+.quiz-feedback {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  display: none;
+}
+
+.quiz-feedback.show {
+  display: block;
+}
+
+.quiz-feedback.success {
+  background-color: var(--success-green-light);
+  border: 1px solid var(--success-green-border);
+  color: var(--success-green);
+}
+
+.quiz-feedback.error {
+  background-color: var(--danger-red-light);
+  border: 1px solid var(--danger-red-border);
+  color: var(--danger-red);
+}
+
+/* ============================================================
+   MODULO 2 SPECIFICO: PILASTRI COACH & BUILDER INTERATTIVO
+   ============================================================ */
+.coach-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.coach-pillars-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.pillar-card {
+  background-color: var(--bg-surface);
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.pillar-card:focus-within,
+.pillar-card.active-pillar {
+  border-color: var(--primary-blue);
+  box-shadow: var(--shadow-md);
+}
+
+.pillar-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.pillar-letter-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: var(--text-inverse);
+  flex-shrink: 0;
+}
+
+.pillar-c1 { background-color: #2563eb; } /* Contesto - Blu */
+.pillar-o  { background-color: #d97706; } /* Obiettivo - Ambra */
+.pillar-a  { background-color: #7c3aed; } /* Azione - Viola */
+.pillar-c2 { background-color: #059669; } /* Criteri - Smeraldo */
+.pillar-h  { background-color: #dc2626; } /* Hai il controllo - Rosso */
+
+.pillar-titles {
+  flex: 1;
+}
+
+.pillar-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.pillar-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.pillar-explanation {
+  font-size: 0.92rem;
+  color: var(--text-main);
+  line-height: 1.5;
+  margin: 0.5rem 0 0.75rem 0;
+}
+
+.pillar-example-box {
+  background-color: var(--bg-subtle);
+  border-left: 3px solid var(--primary-blue);
+  padding: 0.65rem 0.85rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-bottom: 0.875rem;
+  font-size: 0.875rem;
+}
+
+.pillar-example-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.pillar-example-text {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.pillar-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.pillar-input-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-use-example {
+  background: none;
+  border: none;
+  color: var(--primary-blue);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.btn-use-example:hover {
+  color: var(--primary-blue-hover);
+}
+
+.pillar-textarea {
+  width: 100%;
+  min-height: 70px;
+  padding: 0.65rem 0.85rem;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--text-main);
+  resize: vertical;
+  background-color: var(--bg-surface);
+  transition: border-color 0.15s ease;
+}
+
+.pillar-textarea:focus {
+  border-color: var(--primary-blue);
+  outline: none;
+}
+
+/* Anteprima Live del Prompt Assemblato */
+.live-preview-panel {
+  position: sticky;
+  top: 5rem;
+  background-color: var(--bg-surface);
+  border: 2px solid var(--primary-blue);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-md);
+}
+
+.live-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1.5px solid var(--border-subtle);
+}
+
+.live-preview-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.live-preview-box {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  min-height: 220px;
+  max-height: 420px;
+  overflow-y: auto;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+.empty-preview-hint {
+  color: var(--text-muted);
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  text-align: center;
+}
+
+.preview-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--radius-sm);
+  margin-right: 0.35rem;
+  color: #fff;
+  vertical-align: middle;
+}
+
+.preview-tag-c1 { background-color: #2563eb; }
+.preview-tag-o  { background-color: #d97706; }
+.preview-tag-a  { background-color: #7c3aed; }
+.preview-tag-c2 { background-color: #059669; }
+.preview-tag-h  { background-color: #dc2626; }
+
+.live-preview-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .coach-layout {
+    grid-template-columns: 1fr;
+  }
+  .live-preview-panel {
+    position: static;
+  }
+}
+
+/* ============================================================
+   MODULO 3 SPECIFICO: PLAYGROUND & SCHEDA AUTOVALUTAZIONE COACH
+   ============================================================ */
+.playground-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.playground-editor-card {
+  background-color: var(--bg-surface);
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+}
+
+.editor-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.toolbar-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-tool {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-tool:hover {
+  background-color: var(--bg-muted);
+  color: var(--text-main);
+  border-color: var(--border-strong);
+}
+
+.playground-textarea {
+  width: 100%;
+  min-height: 240px;
+  padding: 0.875rem;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--text-main);
+  background-color: var(--bg-surface);
+  resize: vertical;
+  transition: border-color 0.15s ease;
+}
+
+.playground-textarea:focus {
+  border-color: var(--primary-blue);
+  outline: none;
+}
+
+/* Scheda di Autovalutazione COACH */
+.rubric-card {
+  background-color: var(--bg-surface);
+  border: 2px solid var(--primary-blue);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.rubric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1.5px solid var(--border-subtle);
+}
+
+.rubric-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.rubric-progress-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-subtle);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.rubric-progress-badge.complete {
+  background-color: var(--success-green-light);
+  color: var(--success-green);
+  border-color: var(--success-green-border);
+}
+
+.rubric-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.rubric-item {
+  background-color: var(--bg-subtle);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.rubric-item.checked {
+  background-color: #f8fafc;
+  border-color: var(--success-green-border);
+}
+
+.rubric-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.rubric-item-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.rubric-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: 1.5px solid;
+  transition: all 0.15s ease;
+}
+
+.rubric-toggle-btn.btn-missing {
+  background-color: var(--bg-surface);
+  border-color: var(--border-strong);
+  color: var(--text-secondary);
+}
+
+.rubric-toggle-btn.btn-present {
+  background-color: var(--success-green-light);
+  border-color: var(--success-green);
+  color: var(--success-green);
+}
+
+.rubric-question {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0.4rem 0 0.3rem 0;
+  line-height: 1.4;
+}
+
+.rubric-tip-box {
+  background-color: #fffbeb;
+  border-left: 3px solid var(--accent-amber);
+  padding: 0.45rem 0.65rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.8rem;
+  color: #92400e;
+  margin-top: 0.4rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+/* Simulazione Didattica Output */
+.simulation-card {
+  margin-top: 1.5rem;
+  background-color: var(--bg-surface);
+  border: 2px dashed var(--primary-blue);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+}
+
+.simulation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.simulation-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.simulation-box {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--text-main);
+  min-height: 100px;
+}
+
+.simulation-disclaimer {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 900px) {
+  .playground-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   MODULO 4 SPECIFICO: COSTRUTTORE CHATBOT & SYSTEM PROMPT WIZARD
+   ============================================================ */
+.builder-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.builder-form-card {
+  background-color: var(--bg-surface);
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.wizard-step-card {
+  background-color: var(--bg-subtle);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.wizard-step-card:focus-within {
+  border-color: var(--primary-blue);
+  background-color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.wizard-step-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.wizard-step-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.step-num-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: var(--primary-blue);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.wizard-step-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+  line-height: 1.45;
+}
+
+.builder-input,
+.builder-textarea {
+  width: 100%;
+  padding: 0.75rem 0.875rem;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--text-main);
+  background-color: var(--bg-surface);
+  transition: border-color 0.15s ease;
+}
+
+.builder-input:focus,
+.builder-textarea:focus {
+  border-color: var(--primary-blue);
+  outline: none;
+}
+
+.builder-textarea {
+  min-height: 85px;
+  resize: vertical;
+}
+
+/* Clausola Trasparenza Bloccata (Non Negoziabile) */
+.transparency-locked-card {
+  background-color: var(--success-green-light);
+  border: 2px solid var(--success-green-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.transparency-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.transparency-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: var(--success-green);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+}
+
+.transparency-text-locked {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-main);
+  background-color: #fff;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--success-green-border);
+  font-family: var(--font-mono);
+}
+
+/* Live System Prompt Panel (Colonna Destra) */
+.system-prompt-panel {
+  position: sticky;
+  top: 5rem;
+  background-color: var(--bg-surface);
+  border: 2px solid var(--primary-blue);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-md);
+}
+
+.system-prompt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1.5px solid var(--border-subtle);
+}
+
+.system-prompt-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.system-prompt-preview {
+  background-color: #0f172a;
+  color: #f8fafc;
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  min-height: 320px;
+  max-height: 480px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  margin-bottom: 1rem;
+}
+
+/* Banner di Validazione Completezza COACH */
+.validation-alert-banner {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.45;
+}
+
+.validation-alert-banner.warning {
+  background-color: #fffbeb;
+  border: 1.5px solid #fcd34d;
+  color: #92400e;
+}
+
+.validation-alert-banner.success {
+  background-color: var(--success-green-light);
+  border: 1.5px solid var(--success-green-border);
+  color: var(--success-green);
+}
+
+@media (max-width: 900px) {
+  .builder-layout {
+    grid-template-columns: 1fr;
+  }
+  .system-prompt-panel {
+    position: static;
+  }
+}
+
+/* ============================================================
+   MODULO 5 SPECIFICO: VERIFICA PEDAGOGICA & EXPORT CENTER
+   ============================================================ */
+.checklist-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+.checklist-item-card {
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.checklist-item-card:hover {
+  border-color: var(--border-strong);
+  background-color: var(--bg-subtle);
+}
+
+.checklist-item-card.checked {
+  background-color: var(--success-green-light);
+  border-color: var(--success-green-border);
+}
+
+.checklist-checkbox {
+  width: 22px;
+  height: 22px;
+  margin-top: 0.15rem;
+  accent-color: var(--success-green);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.checklist-content {
+  flex: 1;
+}
+
+.checklist-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+.checklist-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+/* Centro Esportazione & Guida Piattaforme */
+.export-hero-card {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 100%);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  margin: 1.75rem 0;
+  box-shadow: var(--shadow-lg);
+}
+
+.export-hero-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.export-hero-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.export-buttons-group {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-export-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  background-color: #22c55e;
+  color: #052e16;
+  font-size: 1rem;
+  font-weight: 800;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-export-primary:hover {
+  background-color: #16a34a;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-export-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.35rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-export-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: #ffffff;
+}
+
+/* Griglia Piattaforme Didattiche */
+.platforms-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.platform-card {
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.125rem;
+}
+
+.platform-card-header {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.platform-steps {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Badge di Completamento Finale */
+.certificate-badge-card {
+  background-color: #fffbeb;
+  border: 2px solid #f59e0b;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.certificate-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 3px solid #d97706;
+  background-color: #fff;
+  flex-shrink: 0;
+}
+
+.certificate-content h4 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #92400e;
+  margin-bottom: 0.35rem;
+}
+
+.certificate-content p {
+  font-size: 0.9rem;
+  color: #78350f;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .platforms-grid {
+    grid-template-columns: 1fr;
+  }
+  .certificate-badge-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ============================================================
+   PULSANTI AZIONE & FOOTER NAVIGAZIONE
+   ============================================================ */
+.module-footer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1.5px solid var(--border-subtle);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-blue);
+  color: var(--text-inverse);
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--primary-blue-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--bg-surface);
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-muted);
+  color: var(--text-main);
+}
+
+/* ============================================================
+   SISTEMA DI FINESTRE DI CONTESTO (HELP POPOVER CON ICONA '?')
+   ============================================================ */
+.help-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: var(--bg-muted);
+  color: var(--text-secondary);
+  border: 1.5px solid var(--border-strong);
+  font-size: 0.75rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin-left: 0.35rem;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.help-icon-btn:hover,
+.help-icon-btn[aria-expanded="true"] {
+  background-color: var(--primary-blue);
+  color: var(--text-inverse);
+  border-color: var(--primary-blue);
+}
+
+/* Pannello Popover Fluttuante Contestuale */
+.context-popover {
+  position: absolute;
+  z-index: 1000;
+  width: 320px;
+  max-width: calc(100vw - 2rem);
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  box-shadow: var(--shadow-popover);
+  display: none;
+  animation: fadeIn 0.15s ease;
+}
+
+.context-popover.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.popover-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.popover-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.popover-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.15rem 0.35rem;
+  border-radius: var(--radius-sm);
+}
+
+.popover-close-btn:hover {
+  color: var(--text-main);
+  background-color: var(--bg-muted);
+}
+
+.popover-body {
+  font-size: 0.85rem;
+  color: var(--text-main);
+  line-height: 1.45;
+}
+
+.popover-example {
+  background-color: var(--bg-subtle);
+  border-left: 3px solid var(--accent-amber);
+  padding: 0.45rem 0.65rem;
+  margin-top: 0.5rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+/* ============================================================
+   FOOTER PEDAGOGICO & DISCLAIMER PRIVACY
+   ============================================================ */
+.app-footer {
+  margin-top: auto;
+  background-color: var(--bg-surface);
+  border-top: 2px solid var(--border-subtle);
+  padding: 1.5rem 0;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.pedagogical-seal {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.privacy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: var(--success-green-light);
+  color: var(--success-green);
+  border: 1px solid var(--success-green-border);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+/* ============================================================
+   PULSANTE E MODAL "RICOMINCIA DA CAPO"
+   ============================================================ */
+.btn-restart-app {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-restart-app:hover {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border-color: #fca5a5;
+}
+
+/* Pulsante Pulisci Singolo Campo */
+.btn-clear-field {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1.2;
+}
+
+.btn-clear-field:hover {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border-color: #fca5a5;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.modal-card {
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  max-width: 480px;
+  width: 100%;
+  padding: 1.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  animation: modalFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.modal-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fee2e2;
+  color: #dc2626;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.modal-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.modal-body {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+}
+
+.modal-warning-box {
+  background-color: #fef2f2;
+  border-left: 3.5px solid #dc2626;
+  padding: 0.65rem 0.85rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin: 0.875rem 0;
+  color: #991b1b;
+  font-size: 0.85rem;
+}
+
+.modal-tip-box {
+  background-color: #eff6ff;
+  border-left: 3.5px solid var(--primary-blue);
+  padding: 0.65rem 0.85rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-top: 0.875rem;
+  color: #1e40af;
+  font-size: 0.85rem;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-modal-cancel {
+  padding: 0.55rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-modal-cancel:hover {
+  background-color: var(--border-subtle);
+  color: var(--text-main);
+}
+
+.btn-modal-confirm {
+  padding: 0.55rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fff;
+  background-color: #dc2626;
+  border: 1px solid #b91c1c;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-modal-confirm:hover {
+  background-color: #b91c1c;
+}
+
+/* ============================================================
+   STILI FORMATIVI SPECIFICI: MODULO IN E MODULO OUT
+   ============================================================ */
+.in-question-card,
+.out-question-card {
+  border: 1.5px solid var(--border-subtle);
+  border-left: 4px solid var(--border-strong);
+  transition: all 0.2s ease;
+}
+
+.in-question-card.answered-correct,
+.out-question-card.answered-correct {
+  border-left: 4px solid var(--success-green);
+  background-color: #fafdfa;
+}
+
+.quiz-option-btn {
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+.quiz-option-btn:hover {
+  background-color: var(--bg-muted);
+  border-color: var(--primary-blue);
+}
+
+.quiz-option-btn.correct {
+  background-color: var(--success-green-light) !important;
+  border-color: var(--success-green) !important;
+  color: #166534 !important;
+  font-weight: 700;
+}
+
+.quiz-option-btn.incorrect-choice {
+  background-color: #fff1f2 !important;
+  border-color: #fda4af !important;
+  color: #9f1239 !important;
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS (Mobile & Tablet)
+   ============================================================ */
+@media (max-width: 1024px) {
+  .modules-nav-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .modules-nav-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .concept-grid,
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .modules-nav-list {
+    grid-template-columns: 1fr;
+  }
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .level-selector-wrapper {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .module-title {
+    font-size: 1.35rem;
+  }
+}
