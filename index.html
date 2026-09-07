@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Laboratorio didattico pratico per docenti: impara a scrivere prompt efficaci con il modello COACH e costruisci il System Prompt del tuo assistente didattico permanente con Maestro Ciuchino.">
+  <title>Maestro Ciuchino — Laboratorio di Prompt & Assistenti IA per Docenti</title>
+  
+  <!-- Preconnect per performance e accessibilità tipografica -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="assets/maestro_ciuchino.png">
+</head>
+<body>
+
+  <!-- Header Applicazione con Identità e Selettore Fascia -->
+  <header class="app-header" role="banner">
+    <div class="app-container">
+      <div class="header-inner">
+        <!-- Logo e Titolo -->
+        <a href="#" class="mascot-brand" id="brand-link" aria-label="Torna all'inizio - Maestro Ciuchino">
+          <img src="assets/maestro_ciuchino.png" alt="Mascotte Maestro Ciuchino" class="mascot-avatar">
+          <div class="brand-titles">
+            <h1>Maestro Ciuchino</h1>
+            <p>Laboratorio Pratico di Prompt & Assistenti IA</p>
+          </div>
+        </a>
+
+        <!-- Selettore Fascia Scolastica (Infanzia / Primaria / Media) & Reset -->
+        <nav class="level-selector-wrapper" aria-label="Seleziona ordine di scuola e gestione percorso">
+          <span class="level-selector-label" id="level-label">Fascia:</span>
+          <div class="level-pills" id="level-pills" role="radiogroup" aria-labelledby="level-label">
+            <!-- I bottoni verranno inseriti dinamicamente da app.js -->
+          </div>
+          <button type="button" class="btn-restart-app" id="btn-global-restart" title="Ricomincia da capo il laboratorio">
+            <span>🔄</span> Ricomincia da capo
+          </button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenitore Principale -->
+  <div class="app-container">
+    <!-- Barra Navigazione dei 5 Moduli Didattici -->
+    <nav class="modules-nav-container" id="modules-nav" aria-label="Navigazione del percorso formativo">
+      <!-- Voci di navigazione inserite da app.js -->
+    </nav>
+
+    <!-- Area Principale di Lavoro del Modulo Attivo -->
+    <main id="app-main" role="main" aria-live="polite">
+      <!-- Il modulo attivo (Modulo 1..5) viene renderizzato qui -->
+    </main>
+  </div>
+
+  <!-- Modal di Conferma "Ricomincia da capo" -->
+  <div id="restart-confirm-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="restart-modal-title" aria-hidden="true" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-icon-wrapper">🔄</div>
+        <h3 id="restart-modal-title" class="modal-title">Ricominciare il laboratorio da capo?</h3>
+      </div>
+      <div class="modal-body" id="restart-modal-body">
+        <p>Questa operazione cancellerà tutti i progressi svolti, le risposte ai quiz e i testi che hai inserito nei moduli, riportando l'applicazione allo stato iniziale.</p>
+        <div class="modal-warning-box">
+          <strong>⚠️ Attenzione:</strong> l'operazione non è reversibile.
+        </div>
+        <div class="modal-tip-box" id="restart-modal-m4-tip" style="display: none;">
+          <strong>💡 Suggerimento:</strong> hai inserito informazioni nel tuo assistente o scritto un prompt. Prima di proseguire, ti consigliamo di copiare e salvare il testo del System Prompt per non perdere il tuo lavoro.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-modal-cancel" id="btn-cancel-restart">Torna al lavoro</button>
+        <button type="button" class="btn-modal-confirm" id="btn-confirm-restart">Sì, ricomincia da capo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Finestra di Contesto Fluttuante Globale (Popover per icona '?') -->
+  <aside id="global-context-popover" 
+         class="context-popover" 
+         role="region" 
+         aria-label="Finestra di aiuto contestuale">
+    <!-- Contenuto del popover generato dinamicamente -->
+  </aside>
+
+  <!-- Footer con Garanzia Privacy e Sigillo Pedagogico -->
+  <footer class="app-footer" role="contentinfo">
+    <div class="app-container">
+      <div class="footer-content">
+        <div class="pedagogical-seal">
+          <span>🐴</span>
+          <span><strong>Maestro Ciuchino</strong> — L'IA a supporto dell'insegnamento, con il controllo saldo del docente.</span>
+        </div>
+        <div class="privacy-badge">
+          <span>🔒</span>
+          <span>100% Client-Side • Nessun dato personale di alunni raccolto</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script Applicativo Principale (Compatibile con file:/// e http://) -->
+  <script src="js/app.bundle.js"></script>
+</body>
+</html>
