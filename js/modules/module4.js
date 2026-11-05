@@ -15,6 +15,7 @@ export function renderModule4(container) {
   const m4Data = schoolData.module4;
   const tooltips = m4Data.tooltips[levelKey] || {};
   const preset = m4Data.presets[levelKey] || {};
+  const placeholders = m4Data.placeholders?.[levelKey] || m4Data.placeholders?.primaria || {};
 
   const botData = state.m4BotData || {
     role: '',
@@ -99,7 +100,7 @@ export function renderModule4(container) {
             <input type="text" 
                    class="builder-input" 
                    id="input-bot-role" 
-                   placeholder="Es: Assistente per la comprensione del testo e compiti graduati"
+                   placeholder="${escapeAttr(placeholders.role || '')}"
                    value="${escapeAttr(botData.role)}">
           </div>
           <div>
@@ -113,7 +114,7 @@ export function renderModule4(container) {
             </div>
             <textarea class="builder-textarea" 
                       id="input-bot-context" 
-                      placeholder="Es: Sei un assistente pedagogico specializzato per docenti di scuola primaria (classi 3ª-5ª)...">${botData.context}</textarea>
+                      placeholder="${escapeAttr(placeholders.context || '')}">${botData.context}</textarea>
           </div>
         </div>
 
@@ -145,7 +146,7 @@ export function renderModule4(container) {
           </div>
           <textarea class="builder-textarea" 
                     id="input-bot-objective" 
-                    placeholder="Es: Elaborare testi didattici graduati, schede di comprensione con glossario ed esercizi inclusivi...">${botData.objective}</textarea>
+                    placeholder="${escapeAttr(placeholders.objective || '')}">${botData.objective}</textarea>
         </div>
 
         <!-- Step 3: Input del Docente & Azioni del Bot (A) -->
@@ -176,7 +177,7 @@ export function renderModule4(container) {
           </div>
           <textarea class="builder-textarea" 
                     id="input-bot-action" 
-                    placeholder="Es: Il docente ti incollerà un testo o argomento. Tu genererai: 1) Versione semplificata a paragrafi, 2) Glossario con 3 parole chiave, 3) 3 quesiti a scelta multipla...">${botData.actionInput}</textarea>
+                    placeholder="${escapeAttr(placeholders.actionInput || '')}">${botData.actionInput}</textarea>
         </div>
 
         <!-- Step 4: Criteri Rigorosi & Limiti Didattici (C) -->
@@ -207,7 +208,7 @@ export function renderModule4(container) {
           </div>
           <textarea class="builder-textarea" 
                     id="input-bot-criteria" 
-                    placeholder="Es: Sintassi lineare (max 15 parole a periodo). Evidenzia parole chiave in grassetto. Non inventare fatti storici o scientifici...">${botData.criteria}</textarea>
+                    placeholder="${escapeAttr(placeholders.criteria || '')}">${botData.criteria}</textarea>
         </div>
 
         <!-- Step 5: Trasparenza & Controllo Docente (H - Da Includere Sempre) -->
@@ -239,7 +240,7 @@ export function renderModule4(container) {
           <textarea class="builder-textarea" 
                     id="input-bot-transparency" 
                     style="background-color: #fff; border: 1.5px solid var(--success-green-border);"
-                    placeholder="Es: Alla fine di ogni risposta aggiungi una sezione «Dichiarazione modifiche» in cui elenchi che cosa hai aggiunto, semplificato o dedotto...">${escapeHtml(botData.transparencyClause !== undefined ? botData.transparencyClause : (preset.transparencyClause || ''))}</textarea>
+                    placeholder="${escapeAttr(placeholders.transparency || '')}">${escapeHtml(botData.transparencyClause !== undefined ? botData.transparencyClause : (preset.transparencyClause || ''))}</textarea>
         </div>
 
       </div>

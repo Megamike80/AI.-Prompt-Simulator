@@ -492,15 +492,15 @@ const schoolData = {
     presets: {
       infanzia: {
         role: "Assistente Didattico per Storie e Routine dell'Infanzia",
-        context: "Sei un assistente pedagogico specializzato per la scuola dell'infanzia (bambini dai 3 ai 5 anni).",
-        objective: "Trasformare argomenti didattici o situazioni quotidiane in brevi racconti illustrabili, giochi motori e filastrocche ritmate.",
-        actionInput: "Il docente ti fornirà un argomento (es. le stagioni, le emozioni, la condivisione) o un testo grezzo. Tu genererai: 1) Una storia breve (max 120 parole) con dialoghi semplici, 2) Una proposta di drammatizzazione o gioco con le mani, 3) Due domande stimolo per il circle-time.",
-        criteria: "Usa frasi corte (soggetto-verbo-oggetto), lessico concreto ed emotivamente rassicurante. Non usare riferimenti a compiti scritti, voti o nozioni scolastiche astratte.",
+        context: "Sei un assistente pedagogico specializzato per la scuola dell'infanzia (bambini dai 3 ai 5 anni). Tieni conto dei tempi brevi di attenzione e della necessità di privilegiare la mediazione corporea, visiva e sonora.",
+        objective: "Trasformare argomenti didattici o situazioni quotidiane in brevi racconti illustrabili, giochi motori e filastrocche ritmate per le routine e il circle-time.",
+        actionInput: "Il docente ti fornirà un argomento (es. le stagioni, le emozioni, la condivisione) o un testo grezzo. Tu genererai: 1) Una storia breve (max 120 parole) con dialoghi semplici e ripetitivi, 2) Una proposta di drammatizzazione o gioco con le mani, 3) Due domande stimolo per il circle-time.",
+        criteria: "Usa frasi corte (soggetto-verbo-oggetto), lessico concreto ed emotivamente rassicurante. Non usare riferimenti a compiti scritti, schede formali, voti o nozioni scolastiche astratte.",
         transparencyClause: "Alla fine di ogni risposta aggiungi una sezione «Dichiarazione modifiche» in cui elenchi che cosa hai aggiunto, semplificato o dedotto rispetto a quanto richiesto, e ogni informazione che il docente deve verificare."
       },
       primaria: {
         role: "Assistente per Schede di Comprensione e Compiti Graduati",
-        context: "Sei un assistente per docenti di scuola primaria (classi 1ª-5ª).",
+        context: "Sei un assistente per docenti di scuola primaria (classi 3ª-5ª). La classe presenta livelli eterogenei di autonomia e necessita di testi accessibili per alunni con DSA e BES.",
         objective: "Elaborare testi didattici graduati, schede di comprensione, problemi matematici narrativi ed esercizi per l'inclusione.",
         actionInput: "Il docente ti incollerà un testo o un argomento disciplinare. Tu produrrai: 1) Il testo adattato e diviso in paragrafi brevi, 2) Glossario con 3 parole chiave spiegate in modo semplice, 3) 3 domande a scelta multipla (con 3 opzioni) e 2 a risposta aperta, 4) Una breve chiave di correzione per il docente.",
         criteria: "Sintassi lineare, mai più di 15 parole per periodo. Evidenzia in grassetto i termini importanti. Non inventare fatti scientifici o storici non verificati.",
@@ -508,11 +508,38 @@ const schoolData = {
       },
       secondaria: {
         role: "Assistente per Verifiche Formative e Rubriche Disciplinari",
-        context: "Sei un assistente per docenti di scuola secondaria di I grado (scuola media).",
-        objective: "Costruire prove di verifica formative, tracce di approfondimento, compiti di realtà e rubriche di valutazione analitiche.",
-        actionInput: "Il docente ti indicherà la disciplina, l'argomento e il tempo a disposizione. Tu genererai: 1) Struttura della prova divisa in Sezione A (conoscenze), Sezione B (competenze/analisi) e Sezione C (compito di realtà/argomentazione), 2) Griglia di valutazione con indicatori chiari e punteggio, 3) Guida alla correzione per il docente con risposte attese.",
-        criteria: "Linguaggio chiaro, diretto e privo di ambiguità. Rispetta rigorosamente i limiti di tempo prefissati e adatta la complessità al livello di autonomia della classe.",
+        context: "Sei un assistente per docenti di scuola secondaria di I grado (classi 1ª-3ª media). Tieni conto del livello di autonomia nello studio degli alunni (11-14 anni) e delle difficoltà ricorrenti nell'uso del lessico disciplinare specifico.",
+        objective: "Costruire prove di verifica formative, tracce di approfondimento, compiti di realtà e rubriche di valutazione analitiche con griglie di punteggio.",
+        actionInput: "Il docente ti indicherà la disciplina, l'argomento e il tempo a disposizione. Tu genererai: 1) Struttura della prova divisa in Sezione A (conoscenze di base), Sezione B (competenze e analisi) e Sezione C (compito di realtà o argomentazione), 2) Griglia di valutazione con indicatori chiari e punteggio, 3) Guida alla correzione per il docente con risposte attese.",
+        criteria: "Linguaggio rigoroso ma accessibile per ragazzi di 11-14 anni. Rispetta rigorosamente i limiti di tempo (max 45 min) e non inserire quesiti trabocchetto o nozioni accademiche fuori programma.",
         transparencyClause: "Alla fine di ogni risposta aggiungi una sezione «Dichiarazione modifiche» in cui elenchi che cosa hai aggiunto, semplificato o dedotto rispetto a quanto richiesto, e ogni informazione che il docente deve verificare."
+      }
+    },
+    // Suggerimenti segnaposto (placeholder) specifici per ciascun ordine di scuola
+    placeholders: {
+      infanzia: {
+        role: "Es: Assistente per storie e routine educative della scuola dell'infanzia",
+        context: "Es: Sei un assistente pedagogico per la scuola dell'infanzia (bambini di 3-5 anni). Tieni conto dei tempi brevi di attenzione e privilegia l'approccio narrativo e sensoriale...",
+        objective: "Es: Creare filastrocche ritmate, brevi racconti da mimare e spunti per il circle-time a partire da una situazione quotidiana...",
+        actionInput: "Es: Il docente fornirà un tema (es. le stagioni o la condivisione). Tu genererai: 1) Storia breve illustrabile, 2) Gioco motorio o drammatizzazione, 3) 2 domande di circle-time...",
+        criteria: "Es: Frasi brevissime (soggetto-verbo-oggetto), lessico concreto e rassicurante. Nessun riferimento a compiti scritti, verifiche formali o voti...",
+        transparency: "Es: Alla fine di ogni risposta aggiungi una sezione «Dichiarazione modifiche» in cui elenchi che cosa hai aggiunto, semplificato o dedotto rispetto a quanto richiesto, e ogni informazione che il docente deve verificare."
+      },
+      primaria: {
+        role: "Es: Assistente per schede didattiche graduate e comprensione del testo",
+        context: "Es: Sei un assistente per docenti di scuola primaria (classi 3ª-5ª). La classe presenta livelli eterogenei di autonomia e necessita di supporti per DSA e BES...",
+        objective: "Es: Elaborare testi didattici graduati, schede di comprensione con glossario ed esercizi inclusivi a risposta aperta e chiusa...",
+        actionInput: "Es: Il docente ti incollerà un testo o argomento. Tu genererai: 1) Versione semplificata a paragrafi, 2) Glossario con 3 parole chiave, 3) 3 quesiti a scelta multipla e 2 aperti, 4) Chiave di correzione...",
+        criteria: "Es: Sintassi lineare (max 15 parole a periodo). Evidenzia parole chiave in grassetto. Non inventare fatti storici o scientifici non verificati...",
+        transparency: "Es: Alla fine di ogni risposta aggiungi una sezione «Dichiarazione modifiche» in cui elenchi che cosa hai aggiunto, semplificato o dedotto rispetto a quanto richiesto, e ogni informazione che il docente deve verificare."
+      },
+      secondaria: {
+        role: "Es: Assistente per verifiche formative e compiti di realtà di Lettere e Storia",
+        context: "Es: Sei un assistente per docenti di scuola secondaria di I grado (classi 1ª-3ª). Tieni conto del livello di autonomia nello studio dei ragazzi di 11-14 anni e delle difficoltà con il lessico disciplinare...",
+        objective: "Es: Costruire prove di verifica formative, quesiti semistrutturati, compiti autentici e rubriche di valutazione analitiche a punti...",
+        actionInput: "Es: Il docente indicherà disciplina, argomento e durata. Tu genererai: 1) Prova divisa in Conoscenze e Competenze, 2) Griglia di valutazione con indicatori e punteggi, 3) Risposte attese per la correzione...",
+        criteria: "Es: Linguaggio disciplinare chiaro e accessibile per ragazzi di 11-14 anni. Tempo max 45 minuti. Nessun quesito a trabocchetto o contenuto fuori programma...",
+        transparency: "Es: Alla fine di ogni risposta aggiungi una sezione «Dichiarazione modifiche» in cui elenchi che cosa hai aggiunto, semplificato o dedotto rispetto a quanto richiesto, e ogni informazione che il docente deve verificare."
       }
     },
     // Help puntuale (icone ?) per Modulo 4
@@ -2686,6 +2713,7 @@ function renderModule4(container) {
   const m4Data = schoolData.module4;
   const tooltips = m4Data.tooltips[levelKey] || {};
   const preset = m4Data.presets[levelKey] || {};
+  const placeholders = m4Data.placeholders?.[levelKey] || m4Data.placeholders?.primaria || {};
 
   const botData = state.m4BotData || {
     role: '',
@@ -2770,7 +2798,7 @@ function renderModule4(container) {
             <input type="text" 
                    class="builder-input" 
                    id="input-bot-role" 
-                   placeholder="Es: Assistente per la comprensione del testo e compiti graduati"
+                   placeholder="${escapeAttr(placeholders.role || '')}"
                    value="${escapeAttr(botData.role)}">
           </div>
           <div>
@@ -2784,7 +2812,7 @@ function renderModule4(container) {
             </div>
             <textarea class="builder-textarea" 
                       id="input-bot-context" 
-                      placeholder="Es: Sei un assistente pedagogico specializzato per docenti di scuola primaria (classi 3ª-5ª)...">${botData.context}</textarea>
+                      placeholder="${escapeAttr(placeholders.context || '')}">${botData.context}</textarea>
           </div>
         </div>
 
@@ -2816,7 +2844,7 @@ function renderModule4(container) {
           </div>
           <textarea class="builder-textarea" 
                     id="input-bot-objective" 
-                    placeholder="Es: Elaborare testi didattici graduati, schede di comprensione con glossario ed esercizi inclusivi...">${botData.objective}</textarea>
+                    placeholder="${escapeAttr(placeholders.objective || '')}">${botData.objective}</textarea>
         </div>
 
         <!-- Step 3: Input del Docente & Azioni del Bot (A) -->
@@ -2847,7 +2875,7 @@ function renderModule4(container) {
           </div>
           <textarea class="builder-textarea" 
                     id="input-bot-action" 
-                    placeholder="Es: Il docente ti incollerà un testo o argomento. Tu genererai: 1) Versione semplificata a paragrafi, 2) Glossario con 3 parole chiave, 3) 3 quesiti a scelta multipla...">${botData.actionInput}</textarea>
+                    placeholder="${escapeAttr(placeholders.actionInput || '')}">${botData.actionInput}</textarea>
         </div>
 
         <!-- Step 4: Criteri Rigorosi & Limiti Didattici (C) -->
@@ -2878,7 +2906,7 @@ function renderModule4(container) {
           </div>
           <textarea class="builder-textarea" 
                     id="input-bot-criteria" 
-                    placeholder="Es: Sintassi lineare (max 15 parole a periodo). Evidenzia parole chiave in grassetto. Non inventare fatti storici o scientifici...">${botData.criteria}</textarea>
+                    placeholder="${escapeAttr(placeholders.criteria || '')}">${botData.criteria}</textarea>
         </div>
 
         <!-- Step 5: Trasparenza & Controllo Docente (H - Da Includere Sempre) -->
@@ -2910,7 +2938,7 @@ function renderModule4(container) {
           <textarea class="builder-textarea" 
                     id="input-bot-transparency" 
                     style="background-color: #fff; border: 1.5px solid var(--success-green-border);"
-                    placeholder="Es: Alla fine di ogni risposta aggiungi una sezione «Dichiarazione modifiche» in cui elenchi che cosa hai aggiunto, semplificato o dedotto...">${escapeHtml(botData.transparencyClause !== undefined ? botData.transparencyClause : (preset.transparencyClause || ''))}</textarea>
+                    placeholder="${escapeAttr(placeholders.transparency || '')}">${escapeHtml(botData.transparencyClause !== undefined ? botData.transparencyClause : (preset.transparencyClause || ''))}</textarea>
         </div>
 
       </div>
