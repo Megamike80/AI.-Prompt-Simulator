@@ -209,13 +209,17 @@ class App {
   setupGlobalPopoverListener() {
     const popoverEl = document.getElementById('global-context-popover');
     if (!popoverEl) return;
+    if (this._popoverListenerAttached) return;
+    this._popoverListenerAttached = true;
 
     // Ascolta i click/tap sull'intero documento
     document.addEventListener('click', (event) => {
       const helpBtn = event.target.closest('.help-icon-btn');
 
       if (helpBtn) {
+        event.preventDefault();
         event.stopPropagation();
+        event.stopImmediatePropagation();
         const isOpen = helpBtn.getAttribute('aria-expanded') === 'true';
 
         if (isOpen) {
@@ -310,7 +314,16 @@ class App {
   }
 }
 
-// Avvia l'app al caricamento del DOM
-document.addEventListener('DOMContentLoaded', () => {
-  window.maestroCiuchinoApp = new App();
-});
+// Avvia l'app al caricamento del DOM se non già avviata
+if (typeof window !== 'undefined') {
+  const initApp = () => {
+    if (!window.maestroCiuchinoApp) {
+      window.maestroCiuchinoApp = new App();
+    }
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+  } else {
+    initApp();
+  }
+}

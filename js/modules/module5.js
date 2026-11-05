@@ -85,6 +85,7 @@ export function renderModule5(container) {
                   <button type="button" 
                           class="help-icon-btn" 
                           aria-label="Spiegazione verifica ${item.label}" 
+                          title="Clicca per la spiegazione didattica di ${item.label}" 
                           aria-expanded="false"
                           data-help-title="${item.label}"
                           data-help-body="${escapeAttr(tt.whatToCheck || '')}"

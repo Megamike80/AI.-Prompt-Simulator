@@ -163,6 +163,7 @@ export function renderModule3(container) {
                     <button type="button" 
                             class="help-icon-btn" 
                             aria-label="Informazioni su ${p.name}" 
+                            title="Clicca per la guida su ${p.name}" 
                             aria-expanded="false"
                             data-help-title="${p.name} (Modello COACH)"
                             data-help-body="${escapeAttr(tt.shortDef || p.question)}"

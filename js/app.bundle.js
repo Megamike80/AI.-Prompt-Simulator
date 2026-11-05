@@ -2398,6 +2398,7 @@ function renderModule3(container) {
                     <button type="button" 
                             class="help-icon-btn" 
                             aria-label="Informazioni su ${p.name}" 
+                            title="Clicca per la guida su ${p.name}" 
                             aria-expanded="false"
                             data-help-title="${p.name} (Modello COACH)"
                             data-help-body="${escapeAttr(tt.shortDef || p.question)}"
@@ -2745,6 +2746,7 @@ function renderModule4(container) {
               <button type="button" 
                       class="help-icon-btn" 
                       aria-label="Aiuto su Contesto e Ruolo" 
+                      title="Clicca per la guida su Contesto e Ruolo"
                       aria-expanded="false"
                       data-help-title="Step 1: Contesto & Identità"
                       data-help-body="${escapeAttr(tooltips.context?.shortDef || '')}"
@@ -2795,6 +2797,7 @@ function renderModule4(container) {
               <button type="button" 
                       class="help-icon-btn" 
                       aria-label="Aiuto sull'Obiettivo" 
+                      title="Clicca per la guida sull'Obiettivo"
                       aria-expanded="false"
                       data-help-title="Step 2: Obiettivo Didattico"
                       data-help-body="${escapeAttr(tooltips.objective?.shortDef || '')}"
@@ -2825,6 +2828,7 @@ function renderModule4(container) {
               <button type="button" 
                       class="help-icon-btn" 
                       aria-label="Aiuto su Input e Azioni" 
+                      title="Clicca per la guida su Input e Azioni"
                       aria-expanded="false"
                       data-help-title="Step 3: Input & Azioni"
                       data-help-body="${escapeAttr(tooltips.actionInput?.shortDef || '')}"
@@ -2855,6 +2859,7 @@ function renderModule4(container) {
               <button type="button" 
                       class="help-icon-btn" 
                       aria-label="Aiuto su Criteri e Limiti" 
+                      title="Clicca per la guida su Criteri e Limiti"
                       aria-expanded="false"
                       data-help-title="Step 4: Criteri & Limiti"
                       data-help-body="${escapeAttr(tooltips.criteria?.shortDef || '')}"
@@ -2885,6 +2890,7 @@ function renderModule4(container) {
               <button type="button" 
                       class="help-icon-btn" 
                       aria-label="Aiuto sulla Trasparenza" 
+                      title="Clicca per la guida sulla Trasparenza (Casella H)"
                       aria-expanded="false"
                       data-help-title="Step 5: Trasparenza (Casella H)"
                       data-help-body="${escapeAttr(tooltips.transparency?.shortDef || '')}"
@@ -3259,6 +3265,7 @@ function renderModule5(container) {
                   <button type="button" 
                           class="help-icon-btn" 
                           aria-label="Spiegazione verifica ${item.label}" 
+                          title="Clicca per la spiegazione didattica di ${item.label}" 
                           aria-expanded="false"
                           data-help-title="${item.label}"
                           data-help-body="${escapeAttr(tt.whatToCheck || '')}"
@@ -4051,13 +4058,17 @@ class App {
   setupGlobalPopoverListener() {
     const popoverEl = document.getElementById('global-context-popover');
     if (!popoverEl) return;
+    if (this._popoverListenerAttached) return;
+    this._popoverListenerAttached = true;
 
     // Ascolta i click/tap sull'intero documento
     document.addEventListener('click', (event) => {
       const helpBtn = event.target.closest('.help-icon-btn');
 
       if (helpBtn) {
+        event.preventDefault();
         event.stopPropagation();
+        event.stopImmediatePropagation();
         const isOpen = helpBtn.getAttribute('aria-expanded') === 'true';
 
         if (isOpen) {
@@ -4152,20 +4163,19 @@ class App {
   }
 }
 
-// Avvia l'app al caricamento del DOM
-document.addEventListener('DOMContentLoaded', () => {
-  window.maestroCiuchinoApp = new App();
-});
-
-
-  // Inizializzazione sicura
-  function initApp() {
-    window.maestroCiuchinoApp = new App();
-  }
-
+// Avvia l'app al caricamento del DOM se non già avviata
+if (typeof window !== 'undefined') {
+  const initApp = () => {
+    if (!window.maestroCiuchinoApp) {
+      window.maestroCiuchinoApp = new App();
+    }
+  };
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initApp);
   } else {
     initApp();
   }
+}
+
+
 })();
